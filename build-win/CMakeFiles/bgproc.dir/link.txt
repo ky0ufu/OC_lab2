@@ -1,2 +1,0 @@
-C:\w64devkit\bin\ar.exe qc libbgproc.a CMakeFiles/bgproc.dir/bgproc.cpp.obj
-C:\w64devkit\bin\ranlib.exe libbgproc.a
