@@ -15,22 +15,25 @@ void monitorThread()
 {
     while (running)
     {
-        std::lock_guard<std::mutex> lock(bgMutex);
-
-        for (auto it = background.begin(); it != background.end();)
         {
-            int exitCode;
-            if (proc::tryWait(*it, exitCode))
+            std::lock_guard<std::mutex> lock(bgMutex);
+
+            for (auto it = background.begin(); it != background.end(); )
             {
-                std::cout << "[END] PID = " << it->pid
-                          << ", exit code =" << exitCode << "\n";
-                it = background.erase(it);
+                int exitCode = 0;
+                if (proc::tryWait(*it, exitCode))
+                {
+                    std::cout << "[END] PID = " << it->pid
+                              << ", exit code = " << exitCode << "\n";
+                    it = background.erase(it);
+                }
+                else
+                {
+                    ++it;
+                }
             }
-            else
-            {
-                ++it;
-            }
-        }
+        } // mutex
+
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
 }
@@ -49,8 +52,8 @@ int main()
         if (cmd == "exit")
             break;
 
-        int waitFlag;
-        std::cout << "Wait for process? (1 = yes, 0 = n0):";
+        int waitFlag = 0;
+        std::cout << "Wait for process? (1 = yes, 0 = no):";
         std::cin >> waitFlag;
         std::cin.ignore();
 

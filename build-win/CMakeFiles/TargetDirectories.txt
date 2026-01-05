@@ -1,0 +1,4 @@
+C:/Users/User/Desktop/labs/OC_lab2/build-win/CMakeFiles/bgproc.dir
+C:/Users/User/Desktop/labs/OC_lab2/build-win/CMakeFiles/test_app.dir
+C:/Users/User/Desktop/labs/OC_lab2/build-win/CMakeFiles/edit_cache.dir
+C:/Users/User/Desktop/labs/OC_lab2/build-win/CMakeFiles/rebuild_cache.dir
