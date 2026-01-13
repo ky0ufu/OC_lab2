@@ -4,7 +4,7 @@
 #include <mutex>
 #include <chrono>
 #include <atomic>
-
+#include <limits>
 #include "bgproc.h"
 
 std::vector<proc::ProcessHandle> background;
@@ -55,7 +55,7 @@ int main()
         int waitFlag = 0;
         std::cout << "Wait for process? (1 = yes, 0 = no):";
         std::cin >> waitFlag;
-        std::cin.ignore();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         auto h = proc::start(cmd);
 

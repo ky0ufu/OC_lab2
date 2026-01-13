@@ -26,7 +26,9 @@ ProcessHandle start(const std::string& command)
 
     PROCESS_INFORMATION pi{};
 
-    std::vector<char> cmd(command.begin(), command.end());
+    std::string fullCmd = "cmd.exe /c \"" + command + "\"";
+
+    std::vector<char> cmd(fullCmd.begin(), fullCmd.end());
     cmd.push_back('\0');
 
     // Пытаемся запустить процесс
