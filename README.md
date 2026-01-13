@@ -30,7 +30,7 @@ Wait for process? (1 = yes, 0 = no): 0
 ```
 ##### POSIX
 ```bash
-./build.sh
+./build/test_app
 ```
 Command example:
 ```bash
